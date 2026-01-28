@@ -27,7 +27,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
    --mount=type=bind,source=redbot/requirements.txt,target=${RED_HOME}/requirements.txt \
    apt update && \
    apt --no-install-recommends -y install build-essential git units tini && \
-   if [ -z "$SKIP_JRE" ]; then apt --no-install-recommends -y install openjdk-21-jre-headless; fi && \
+   if [ -z "$SKIP_JRE" ]; then apt --no-install-recommends -y install openjdk-17-jre-headless; fi && \
    su $RED_USER -c "python -m pip install --user -r ${RED_HOME}/requirements.txt" && \
    apt remove -y build-essential && \
    apt autoremove -y
